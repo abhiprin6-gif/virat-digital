@@ -2,65 +2,57 @@
 <html lang="hi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>INSTANT PAY | VIRAT Digital Ecosystem</title>
+<title>Instant Pay | VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
-.pay-box{max-width:600px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel);text-align:center}
-.form-group{margin-bottom:15px;text-align:left}
-.form-group label{display:block;margin-bottom:5px;font-size:13px;color:var(--muted)}
-.form-group input{width:100%;padding:12px;border-radius:10px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none}
-.qr-card{margin-top:20px;padding:20px;border:1px solid #1f506e;border-radius:15px;background:#010914;display:none}
-.qr-card img{width:180px;height:180px;border-radius:10px;background:#fff;padding:8px}
-.upi-link{display:inline-block;margin-top:12px;padding:10px 20px;border-radius:20px;background:var(--green);color:#020b16;font-weight:700}
+.pay-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.pay-form{background:#010814;border:1px solid #1c4b69;border-radius:15px;padding:20px;margin-top:20px;text-align:left}
+.form-row{margin-bottom:15px}
+.form-row label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
+.form-row input{width:100%;padding:12px;border-radius:10px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none}
+.notice-box{background:#111f2c;border:1px solid #2e5b7a;padding:12px;border-radius:10px;font-size:12px;color:#a9d1ff;margin-bottom:15px}
 </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Instant Pay</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Instant Pay</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="communication.html">Communication</a></nav><button class="menu" id="menu">☰</button></header>
 <main>
 <div class="pay-box">
-<h2>💳 INSTANT PAY — UPI QR Generator</h2>
-<p style="color:var(--muted);font-size:14px">अपनी UPI ID और राशि दर्ज करके तुरंत पेमेंट क्यूआर कोड बनाएँ।</p>
-<div class="form-group">
-<label>UPI ID (उदा: username@upi / phone@paytm)</label>
-<input type="text" id="upiId" placeholder="virat@upi">
-</div>
-<div class="form-group">
-<label>प्राप्तकर्ता का नाम (Name)</label>
-<input type="text" id="upiName" placeholder="VIRAT Digital">
-</div>
-<div class="form-group">
-<label>राशि (Amount in ₹) - वैकल्पिक</label>
-<input type="number" id="upiAmt" placeholder="100">
-</div>
-<button class="btn primary" onclick="generateQR()" style="width:100%">⚡ QR Code बनाएँ</button>
+<h2>💳 INSTANT PAY (Secure Demo & UPI Gateway)</h2>
+<p style="color:var(--muted);font-size:14px">सुरक्षित डिजिटल भुगतान और क्यूआर आधारित लेन-देन का अधिकृत ढांचा।</p>
 
-<div class="qr-card" id="qrCard">
-<img id="qrImg" src="" alt="UPI QR Code">
-<p id="qrText" style="font-size:14px;color:#00ff91;margin-top:10px"></p>
-<a id="upiAppBtn" class="upi-link" href="#" target="_blank">📱 UPI App से भुगतान करें</a>
+<div class="notice-box">
+⚠️ <strong>सुरक्षा सूचना:</strong> यह एक सुरक्षित डेमो मोड (Demo/Mock Mode) है। वास्तविक वित्तीय लेन-देन शुरू करने से पहले अधिकृत पेमेंट गेटवे पार्टनर (जैसे UPI Intent SDK / Razorpay) के नियम और अनुपालन (Regulatory Requirements) पूरे किए जाएंगे।
 </div>
-<br><br>
-<a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+
+<div class="pay-form">
+<h3 style="color:var(--cyan);margin-top:0;">💸 त्वरित राशि ट्रांसफर / बिल भुगतान (Demo)</h3>
+<div class="form-row">
+<label>प्राप्तकर्ता UPI ID या मोबाइल नंबर</label>
+<input type="text" id="payeeId" placeholder="उदा: virat@upi">
+</div>
+<div class="form-row">
+<label>राशि (₹)</label>
+<input type="number" id="payAmount" placeholder="0.00">
+</div>
+<button class="btn primary" onclick="processDemoPay()" style="width:100%;">भुगतान सुरक्षित रूप से जांचें</button>
+
+<div id="payResult" style="margin-top:15px;display:none;font-size:14px;color:#23e8ff;"></div>
+</div>
+
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
 </div>
 </main>
 <script src="../js/script.js"></script>
 <script>
-function generateQR() {
-    const id = document.getElementById('upiId').value.trim();
-    const name = document.getElementById('upiName').value.trim() || 'VIRAT Merchant';
-    const amt = document.getElementById('upiAmt').value.trim();
-    
-    if(!id) { alert('कृपया अपनी UPI ID दर्ज करें!'); return; }
-    
-    let upiUrl = `upi://pay?pa=${encodeURIComponent(id)}&pn=${encodeURIComponent(name)}&cu=INR`;
-    if(amt) upiUrl += `&am=${encodeURIComponent(amt)}`;
-    
-    const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
-    
-    document.getElementById('qrImg').src = qrApi;
-    document.getElementById('qrText').textContent = `${name} (${id}) - ₹${amt || 'स्वेच्छा'}`;
-    document.getElementById('upiAppBtn').href = upiUrl;
-    document.getElementById('qrCard').style.display = 'block';
+function processDemoPay(){
+  let id = document.getElementById('payeeId').value.trim();
+  let amt = document.getElementById('payAmount').value.trim();
+  let res = document.getElementById('payResult');
+  
+  if(!id || !amt){ alert('कृपया UPI आईडी और राशि दोनों दर्ज करें!'); return; }
+  
+  res.style.display = 'block';
+  res.innerHTML = `⏳ डेमो ट्रांजैक्शन वेरीफाई किया जा रहा है...<br>प्राप्तकर्ता: <strong>${id}</strong> | राशि: <strong>₹${amt}</strong><br><span style="color:#ffb703;">स्थिति: Mock Sandbox Environment (कोई वास्तविक पैसा नहीं काटा गया)</span>`;
 }
 </script>
 </body></html>

@@ -2,76 +2,90 @@
 <html lang="hi">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#03101e">
-<title>VIRAT DIGITAL ECOSYSTEM | Bharat Super App Platform</title>
+<title>VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-.search-container{max-width:700px;margin:20px auto 30px;padding:0 15px}
-.main-search{width:100%;padding:16px 24px;border-radius:30px;border:2px solid var(--cyan);background:#020d1a;color:#fff;font-size:16px;outline:none;box-shadow:0 0 20px rgba(35,232,255,0.15)}
-.main-search:focus{box-shadow:0 0 25px rgba(35,232,255,0.35)}
-.cat-bar{display:flex;gap:10px;overflow-x:auto;padding:10px 0;margin-bottom:25px;scrollbar-width:none}
-.cat-btn{border:1px solid #23587b;background:#03182b;color:#a8d5f2;padding:8px 18px;border-radius:20px;white-space:nowrap;font-size:13px;cursor:pointer}
-.cat-btn.active,.cat-btn:hover{background:var(--cyan);color:#020b16;font-weight:700;border-color:var(--cyan)}
-.badge-tag{font-size:10px;background:#ff9b18;color:#000;padding:2px 7px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
-#noResult{display:none;text-align:center;padding:30px;color:var(--muted)}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin-top:20px;text-align:left}
+.dash-card{border:1px solid #1c4b69;border-radius:15px;padding:18px;background:#010814;transition:0.2s}
+.dash-card:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.dash-card h3{margin:0 0 5px;color:var(--cyan);font-size:16px}
+.dash-card p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.hero-section{text-align:center;padding:30px 10px;background:radial-gradient(circle, #021a30 0%, #010814 80%);border-radius:20px;border:1px solid var(--line);margin-bottom:20px}
 </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="index.html"><span class="flag">🇮🇳</span><span><strong><span>V</span>IRAT DIGITAL ECOSYSTEM</strong><small>One Platform. Endless Possibilities.</small></span></a><nav class="nav" id="nav"><a href="index.html#home">Home</a><a href="index.html#panels">Directory</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav><a class="premium" href="#panels">👑 All 39 Modules</a><button class="menu" id="menu" aria-label="Open menu">☰</button></header>
+<header class="topbar">
+<a class="brand" href="index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Sovereign Super-App</small></span></a>
+<nav class="nav" id="nav">
+<a href="index.html">Home</a>
+<a href="pages/search-ai.html">Search & AI</a>
+<a href="pages/csc.html">CSC</a>
+<a href="pages/pay.html">Pay</a>
+</nav>
+<button class="menu" id="menu">☰</button>
+</header>
 <main>
-<section class="hero" id="home"><div class="hero-copy"><div class="tag">🔥 Made in India <span>•</span> Super App Architecture</div><h1><span class="saffron">Bharat ka</span><br><span class="mint">Digital Super-App</span></h1><h2>Soch Se Sach Tak</h2><p class="intro">VIRAT DIGITAL ECOSYSTEM — 39+ एकीकृत डिजिटल सेवाएँ, उत्पादकता टूल, ई-गवर्नेस एवं AI असिस्टेंट एक ही स्वदेशी मंच पर।</p><div class="benefits"><span>Fast</span> • <span>Mobile Friendly</span> • <span>Secure 🇮🇳</span></div><div class="actions"><a class="btn primary" href="#panels">🚀 डायरेक्टरी ब्राउज़ करें →</a></div></div><div class="hero-visual"><div class="orb"><span>V</span></div></div></section>
-
-<section class="section" id="panels">
-<div class="section-heading"><span class="eyebrow">🚀 Super App Directory</span><h2>Explore All VIRAT Services</h2><p>अपनी आवश्यक सेवा खोजें या श्रेणी अनुसार फ़िल्टर करें:</p></div>
-
-<div class="search-container">
-<input type="text" id="moduleSearch" class="main-search" placeholder="🔍 कोई भी सेवा खोजें (उदा: V Search, V Maps, Career, Pay, AI)..." onkeyup="filterModules()">
-<div class="cat-bar">
-<button class="cat-btn active" onclick="filterCategory('all')">सभी (All)</button>
-<button class="cat-btn" onclick="filterCategory('govt')">🏛️ Govt & Citizen</button>
-<button class="cat-btn" onclick="filterCategory('google')">📦 Productivity & Tools</button>
-<button class="cat-btn" onclick="filterCategory('tech')">🤖 AI & Tech</button>
-<button class="cat-btn" onclick="filterCategory('career')">🎓 Career & Edu</button>
-<button class="cat-btn" onclick="filterCategory('fin')">💳 Finance & Business</button>
+<div class="hero-section">
+<h1>🇮🇳 VIRAT डिजिटल इकोसिस्टम</h1>
+<p style="color:var(--muted);max-width:600px;margin:10px auto;">नागरिक सेवाओं, एआई, शिक्षा, स्वास्थ्य, और डिजिटल उत्पादकता का एक सुरक्षित और स्वदेशी सुपर-ऐप प्लेटफॉर्म।</p>
+<div style="margin-top:15px;">
+<a href="pages/search-ai.html" class="btn primary">🔍 V Search & AI खोलें</a>
+<a href="pages/pay.html" class="btn">💳 Instant Pay</a>
 </div>
 </div>
 
-<div class="panels" id="services">
-<!-- Core & Search -->
-<a class="panel" data-cat="google" href="pages/search.html"><div class="emoji">🔍</div><h3>V Search</h3><p>Fast, privacy-focused Indian Web Search Engine</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="tech" href="pages/ai.html"><div class="emoji">🤖</div><h3>VIRAT AI <span class="badge-tag">AI</span></h3><p>Chat, Code & Smart Prompt Workspace</p><span class="arrow">→</span></a>
+<h2 style="text-align:left;font-size:20px;border-bottom:1px solid var(--line);padding-bottom:8px;">🚀 मुख्य डिजिटल सेवा मॉड्यूल</h2>
 
-<!-- Govt & Citizen -->
-<a class="panel" data-cat="govt" href="pages/csc.html"><div class="emoji">🪪</div><h3>VIRAT CSC</h3><p>Government Certificates & Digital Helpline</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="govt" href="pages/problem-hub.html"><div class="emoji">🏛️</div><h3>Citizen Problem Hub</h3><p>Public Grievance Drafter & Department Route</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="govt" href="pages/govt.html"><div class="emoji">🇮🇳</div><h3>Government</h3><p>Central & State Schemes Portal Directory</p><span class="arrow">→</span></a>
-
-<!-- Productivity & Google-Style -->
-<a class="panel" data-cat="google" href="pages/maps.html"><div class="emoji">🗺️</div><h3>V Maps</h3><p>GPS, Routes, Nearby Services & Offline Maps</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="google" href="pages/mail.html"><div class="emoji">✉️</div><h3>V Mail</h3><p>Secure Communication & Messaging</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="google" href="pages/docs.html"><div class="emoji">📄</div><h3>V Docs</h3><p>Document Editor & Cloud Writing</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="google" href="pages/sheets.html"><div class="emoji">📊</div><h3>V Sheets</h3><p>Spreadsheet & Data Analytics</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="google" href="pages/drive.html"><div class="emoji">☁️</div><h3>V Drive</h3><p>Encrypted Cloud Storage & Files</p><span class="arrow">→</span></a>
-
-<!-- Finance & Business -->
-<a class="panel" data-cat="fin" href="pages/pay.html"><div class="emoji">💳</div><h3>INSTANT PAY</h3><p>UPI QR Generator, Money Links & Receipts</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="fin" href="pages/business.html"><div class="emoji">💼</div><h3>Business Directory</h3><p>Local Vendor Discovery & Merchant Tools</p><span class="arrow">→</span></a>
-
-<!-- Career & Edu -->
-<a class="panel" data-cat="career" href="pages/career.html"><div class="emoji">🎓</div><h3>V Career</h3><p>Sarkari & Private Jobs, Resume Builder, Admit Cards</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="career" href="pages/education.html"><div class="emoji">📚</div><h3>Education</h3><p>Mock Tests, ITI Resources & Scholarships</p><span class="arrow">→</span></a>
-
-<!-- Health & Agri -->
-<a class="panel" data-cat="govt" href="pages/health.html"><div class="emoji">🏥</div><h3>Health</h3><p>Hospital Finder, Health Schemes & Reminders</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="govt" href="pages/agri.html"><div class="emoji">🌾</div><h3>Agriculture</h3><p>Mandi Prices, Crop Weather & Agri Schemes</p><span class="arrow">→</span></a>
-
-<!-- Tech & Innovation -->
-<a class="panel" data-cat="tech" href="pages/labs.html"><div class="emoji">🛡️</div><h3>VIRAT Labs</h3><p>Voice AI, Web3 Identity & Experimental Beta</p><span class="arrow">→</span></a>
-<a class="panel" data-cat="tech" href="pages/social.html"><div class="emoji">💬</div><h3>Connect (Social)</h3><p>Creator Feed & Community Hub</p><span class="arrow">→</span></a>
+<div class="dashboard-grid">
+<div class="dash-card">
+<h3>💼 V Career & Jobs</h3>
+<p>सरकारी नौकरियाँ, एडमिट कार्ड और परीक्षा परिणाम सूचनाएं।</p>
+<a href="pages/career.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
 </div>
-<div id="noResult"><p>कोई सेवा नहीं मिली। कृपया दूसरा कीवर्ड खोजें।</p></div>
-</section>
+
+<div class="dash-card">
+<h3>🇮🇳 Government Services</h3>
+<p>केंद्र और राज्य सरकार की योजनाएँ व नागरिक मार्गदर्शिका।</p>
+<a href="pages/gov.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>🏛️ Citizen Problem Hub</h3>
+<p>नागरिक समस्या दर्ज करें और आधिकारिक शिकायत ड्राफ्ट बनाएँ।</p>
+<a href="pages/problem-hub.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>🗺️ V Maps & Location</h3>
+<p>निकटवर्ती अस्पताल, सरकारी कार्यालय और स्थान खोजें।</p>
+<a href="pages/maps.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>📚 Education, Health & Agri</h3>
+<p>शिक्षा, स्वास्थ्य हेल्पलाइन और कृषि मंडी भाव।</p>
+<a href="pages/edu-health-agri.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>☁️ V Drive & Productivity</h3>
+<p>क्लाउड स्टोरेज, V Docs और कार्यालयीय उपकरण।</p>
+<a href="pages/productivity.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>📬 V Mail & Video Hub</h3>
+<p>सुरक्षित ईमेल संदेश, वीडियो स्ट्रीमिंग और वर्चुअल मीट।</p>
+<a href="pages/communication.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+
+<div class="dash-card">
+<h3>🏢 VIRAT CSC Services</h3>
+<p>प्रमाण पत्र, आधार और डिजिटल सेवा केंद्र जानकारी।</p>
+<a href="pages/csc.html" class="btn" style="width:100%;text-align:center;">खोलें →</a>
+</div>
+</div>
+
 </main>
-<footer class="footer" id="contact"><a class="brand" href="index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>One Platform. Endless Possibilities.</small></span></a><small>© <span id="year"></span> VIRAT Digital Ecosystem</small></footer>
 <script src="js/script.js"></script>
 </body></html>
