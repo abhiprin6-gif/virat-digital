@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V Search & AI | VIRAT Digital Ecosystem</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.search-ai-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.search-hero{text-align:center;margin-bottom:25px}
+.search-input-group{display:flex;gap:10px;margin-top:15px}
+.search-input-group input{flex:1;padding:14px 20px;border-radius:30px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none;font-size:16px}
+.results-area{margin-top:20px;text-align:left}
+.result-item{border:1px solid #1c4b69;border-radius:12px;padding:15px;background:#010814;margin-bottom:10px}
+.result-item h4{margin:0 0 5px;color:var(--cyan)}
+.result-item p{margin:0;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>V Search & AI</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="ai.html">AI Panel</a></nav><button class="menu" id="menu">☰</button></header>
+<main>
+<div class="search-ai-box">
+<div class="search-hero">
+<h2>🔍 V Search & AI Assistant</h2>
+<p style="color:var(--muted);font-size:14px">विराट इकोसिस्टम में त्वरित सेवाओं, दस्तावेजों और ज्ञान का संधान करें।</p>
+<div class="search-input-group">
+<input type="text" id="vSearchInput" placeholder="यहाँ खोजें (उदा: CSC, Career, Payment, Health)..." onkeyup="performVSearch()">
+<button class="btn primary" onclick="performVSearch()">खोजें</button>
+</div>
+</div>
+
+<div class="results-area" id="vSearchResults">
+<div class="result-item">
+<h4>💡 सुझाव</h4>
+<p>ऊपर खोज बॉक्स में किसी भी सेवा का नाम लिखकर तुरंत परिणाम प्राप्त करें।</p>
+</div>
+</div>
+
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
+</main>
+<script src="../js/script.js"></script>
+<script>
+const servicesDB = [
+  {title: "AI Workspace", cat: "Artificial Intelligence", url: "ai.html", desc: "संवादात्मक एआई और कोड ऑटोमेशन टूल।"},
+  {title: "CSC Services", cat: "e-Governance", url: "csc.html", desc: "प्रमाण पत्र, आधार और पैन कार्ड सेवाएँ।"},
+  {title: "Instant Pay", cat: "Finance", url: "pay.html", desc: "UPI QR कोड जनरेटर और पेमेंट लिंक।"},
+  {title: "V Career", cat: "Employment", url: "career.html", desc: "सरकारी नौकरियाँ, एडमिट कार्ड और परिणाम।"},
+  {title: "Citizen Problem Hub", cat: "Grievance", url: "problem-hub.html", desc: "नागरिक समस्या दर्ज करें और शिकायत ड्राफ्ट बनाएँ।"},
+  {title: "Digital Tools", cat: "Productivity", url: "tools.html", desc: "क्विक नोटपैड और टेक्स्ट यूटिलिटी।"}
+];
+
+function performVSearch() {
+  let query = document.getElementById('vSearchInput').value.toLowerCase().trim();
+  let container = document.getElementById('vSearchResults');
+  container.innerHTML = '';
+
+  if(!query) {
+    container.innerHTML = `<div class="result-item"><h4>💡 सुझाव</h4><p>ऊपर खोज बॉक्स में किसी भी सेवा का नाम लिखकर तुरंत परिणाम प्राप्त करें।</p></div>`;
+    return;
+  }
+
+  let filtered = servicesDB.filter(s => s.title.toLowerCase().includes(query) || s.cat.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query));
+
+  if(filtered.length === 0) {
+    container.innerHTML = `<div class="result-item"><h4>कोई परिणाम नहीं मिला</h4><p>"${query}" से संबंधित कोई मॉड्यूल नहीं मिला।</p></div>`;
+    return;
+  }
+
+  filtered.forEach(item => {
+    let div = document.createElement('div');
+    div.className = 'result-item';
+    div.innerHTML = `<h4><a href="${item.url}" style="color:var(--cyan);text-decoration:none">${item.title}</a></h4><p>[${item.cat}] - ${item.desc}</p>`;
+    container.appendChild(div);
+  });
+}
+</script>
+</body></html>
