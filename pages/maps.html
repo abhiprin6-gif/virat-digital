@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V Maps | VIRAT Digital Ecosystem</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.maps-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.map-hero{text-align:center;margin-bottom:20px}
+.map-search-group{display:flex;gap:10px;margin-top:15px}
+.map-search-group input{flex:1;padding:14px 20px;border-radius:30px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none;font-size:15px}
+.place-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:15px;margin-top:20px}
+.place-card{border:1px solid #1c4b69;border-radius:15px;padding:18px;background:#010814;text-align:left}
+.place-card h3{margin:0 0 5px;color:var(--cyan);font-size:16px}
+.place-card p{font-size:13px;color:var(--muted);margin:0 0 10px}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>V Maps</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="search-ai.html">Search</a></nav><button class="menu" id="menu">☰</button></header>
+<main>
+<div class="maps-box">
+<div class="map-hero">
+<h2>🗺️ V Maps & Location Services</h2>
+<p style="color:var(--muted);font-size:14px">निकटवर्ती सरकारी कार्यालयों, अस्पतालों और आवश्यक सेवाओं की खोज करें।</p>
+<div class="map-search-group">
+<input type="text" id="mapInput" placeholder="स्थान या सेवा खोजें (उदा: Hospital, CSC Center, Police Station)...">
+<button class="btn primary" onclick="searchLocation()">खोजें</button>
+</div>
+</div>
+
+<div class="place-grid">
+<div class="place-card">
+<h3>🏥 निकटवर्ती अस्पताल (Hospitals)</h3>
+<p>आसपास के सरकारी और अनुशंसित स्वास्थ्य केंद्रों की सूची।</p>
+<button class="btn" onclick="alert('GPS स्थान प्राप्त किया जा रहा है...')">लोकेशन देखें →</button>
+</div>
+<div class="place-card">
+<h3>🏛️ सरकारी कार्यालय (Govt Offices)</h3>
+<p>तहसील, ब्लॉक और नागरिक सेवा केंद्र (CSC) की जानकारी।</p>
+<button class="btn" onclick="alert('कार्यालय मानचित्र लोड हो रहा है...')">मार्गदर्शन देखें →</button>
+</div>
+<div class="place-card">
+<h3>🛍️ स्थानीय बाज़ार व दुकानें</h3>
+<p>स्वदेशी और स्थानीय வணிக प्रतिष्ठानों की सूची।</p>
+<button class="btn" onclick="alert('डेटाबेस सिंक किया जा रहा है...')">देखें →</button>
+</div>
+</div>
+
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
+</main>
+<script src="../js/script.js"></script>
+<script>
+function searchLocation() {
+  let q = document.getElementById('mapInput').value.trim();
+  if(!q) { alert('कृपया खोजने के लिए स्थान या सेवा का नाम दर्ज करें!'); return; }
+  alert('"${q}" के लिए V Maps डेटाबेस खोजा जा रहा है...');
+}
+</script>
+</body></html>
