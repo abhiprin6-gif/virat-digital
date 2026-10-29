@@ -4,14 +4,60 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CSC Services | VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="../css/style.css">
+<style>
+.csc-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px}
+.csc-card{border:1px solid #1d4d6b;border-radius:15px;padding:18px;background:#021020;text-align:left;transition:0.2s}
+.csc-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.csc-card h3{margin:0 0 8px;font-size:18px;color:var(--cyan)}
+.csc-card p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.csc-card button{width:100%;padding:8px 14px;border-radius:20px;border:1px solid var(--green);background:transparent;color:var(--green);font-weight:600;cursor:pointer}
+.csc-card button:hover{background:var(--green);color:#020b16}
+.search-bar{width:100%;padding:12px 18px;border-radius:25px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none;margin-bottom:15px}
+</style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>CSC Panel</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
-<main class="subpage-container">
-<h2>🪪 CSC Services Module</h2>
-<p>यहाँ ई-गवर्नेस, नागरिक प्रमाणपत्र व सरकारी सेवाएँ एकीकृत की जाएँगी।</p>
-<br>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>CSC Services</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
+<main>
+<div class="csc-box">
+<h2>🪪 CSC & e-Governance Portal</h2>
+<p style="color:var(--muted);font-size:14px">डिजिटल सहायता, सरकारी प्रमाणपत्र एवं नागरिक सुविधाओं तक सीधी पहुँच।</p>
+<input type="text" class="search-bar" id="cscSearch" placeholder="🔍 सरकारी सेवा या प्रमाणपत्र खोजें (उदा: आय प्रमाण पत्र, आधार, पैन)..." onkeyup="filterServices()">
+<div class="service-grid" id="serviceGrid">
+<div class="csc-card">
+<h3>📜 प्रमाण पत्र (Certificates)</h3>
+<p>आय, जाति, निवास व जन्म प्रमाण पत्र आवेदन सहायता पोर्टल।</p>
+<button onclick="alert('प्रमाण पत्र सेवा पोर्टल से जोड़ा जा रहा है...')">आवेदन करें →</button>
+</div>
+<div class="csc-card">
+<h3>🆔 आधार सेवा (Aadhaar Services)</h3>
+<p>आधार अपडेट, स्थिति जाँच एवं अपॉइंटमेंट बुकिंग मार्गदर्शन।</p>
+<button onclick="alert('आधार सेवा केंद्र पोर्टल लाइव हो रहा है...')">जाँच करें →</button>
+</div>
+<div class="csc-card">
+<h3>💳 पैन कार्ड (PAN Card)</h3>
+<p>नया पैन कार्ड आवेदन एवं सुधार सुविधा।</p>
+<button onclick="alert('पैन कार्ड पोर्टल से लिंक किया जा रहा है...')">अप्लाई करें →</button>
+</div>
+<div class="csc-card">
+<h3>🌾 किसान कल्याण (PM-Kisan)</h3>
+<p>किसान सम्मान निधि स्थिति व ई-केवाईसी पोर्टल।</p>
+<button onclick="alert('PM-Kisan पोर्टल खुल रहा है...')">स्टेटस देखें →</button>
+</div>
+</div>
+<br><br>
 <a class="btn primary" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
 </main>
 <script src="../js/script.js"></script>
+<script>
+function filterServices() {
+    let input = document.getElementById('cscSearch').value.toLowerCase();
+    let cards = document.querySelectorAll('.csc-card');
+    cards.forEach(card => {
+        let text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? 'block' : 'none';
+    });
+}
+</script>
 </body></html>

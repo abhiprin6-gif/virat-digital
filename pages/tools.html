@@ -4,14 +4,56 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Digital Tools | VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="../css/style.css">
+<style>
+.tools-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.tool-section{margin-top:20px;padding:20px;border:1px solid #1c4b69;border-radius:15px;background:#010814;text-align:left}
+.tool-section h3{margin-top:0;color:var(--cyan)}
+textarea{width:100%;height:120px;padding:12px;border-radius:10px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none;resize:vertical;font-family:monospace}
+.btn-row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+</style>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Digital Tools</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
-<main class="subpage-container">
-<h2>☁️ Digital Tools Module</h2>
-<p>यहाँ क्लाउड वर्कस्पेस, डॉक्यूमेंट स्टोर व खोज टूल सेट होंगे।</p>
+<main>
+<div class="tools-box">
+<h2>☁️ Digital Workspace & Tools</h2>
+<p style="color:var(--muted);font-size:14px">क्लाउड वर्कस्पेस, त्वरित नोट पैड और डिजिटल यूटिलिटीज।</p>
+
+<div class="tool-section">
+<h3>📝 Quick Notepad & Word Counter</h3>
+<textarea id="noteArea" placeholder="यहाँ अपने नोट्स या विचार लिखें..."></textarea>
+<div class="btn-row">
+<button class="btn" onclick="countWords()">📊 शब्द गिनें</button>
+<button class="btn" onclick="clearNotes()">🗑️ साफ़ करें</button>
+<button class="btn primary" onclick="downloadNotes()">💾 नोट डाउनलोड करें</button>
+</div>
+<p id="statsText" style="color:var(--green);font-size:13px;margin-top:10px"></p>
+</div>
+
 <br>
 <a class="btn primary" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
 </main>
 <script src="../js/script.js"></script>
+<script>
+function countWords() {
+    let txt = document.getElementById('noteArea').value.trim();
+    let words = txt ? txt.split(/\s+/).length : 0;
+    let chars = txt.length;
+    document.getElementById('statsText').textContent = `कुल शब्द: ${words} | कुल अक्षर: ${chars}`;
+}
+function clearNotes() {
+    document.getElementById('noteArea').value = '';
+    document.getElementById('statsText').textContent = '';
+}
+function downloadNotes() {
+    let txt = document.getElementById('noteArea').value;
+    if(!txt) { alert('डाउनलोड करने के लिए पहले कुछ लिखें!'); return; }
+    let blob = new Blob([txt], {type: "text/plain"});
+    let a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "virat-notes.txt";
+    a.click();
+}
+</script>
 </body></html>
