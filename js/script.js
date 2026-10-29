@@ -1,3 +1,4 @@
+// Menu Navigation Toggle
 const menu = document.getElementById('menu'), nav = document.getElementById('nav');
 if (menu && nav) {
     menu.addEventListener('click', () => {
@@ -7,39 +8,55 @@ if (menu && nav) {
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 }
 
+// Year Dynamic Update
 const yearEl = document.getElementById('year');
-if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-const translations = {
-    hi: {
-        heroH1: '<span class="saffron">भारत का</span><br><span class="mint">डिजिटल प्लेटफ़ॉर्म</span>',
-        heroSub: "सोच से सच तक",
-        heroDesc: "VIRAT DIGITAL ECOSYSTEM — भारत का अपना डिजिटल इकोसिस्टम, जहाँ आपकी कल्पनाएँ, काम और नए विचार एक ही प्लेटफ़ॉर्म पर जुड़ते हैं।",
-        btnStart: "🚀 शुरुआत करें →",
-        btnExplore: "▦ पैनल देखें"
-    },
-    en: {
-        heroH1: '<span class="saffron">Bharat\'s Own</span><br><span class="mint">Digital Platform</span>',
-        heroSub: "From Vision to Reality",
-        heroDesc: "VIRAT DIGITAL ECOSYSTEM — India\'s own digital ecosystem uniting your ideas, work, and innovation on a single platform.",
-        btnStart: "🚀 Get Started →",
-        btnExplore: "▦ Explore Panels"
+// All 39+ Modules Directory Search & Filter Engine
+function filterModules() {
+    const query = document.getElementById('moduleSearch').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.panel');
+    let found = 0;
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+            card.style.display = 'flex';
+            found++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const noResult = document.getElementById('noResult');
+    if (noResult) {
+        noResult.style.display = found === 0 ? 'block' : 'none';
     }
-};
-
-let currentLang = 'hi';
-function toggleLanguage() {
-    currentLang = currentLang === 'hi' ? 'en' : 'hi';
-    const t = translations[currentLang];
-    const elH1 = document.querySelector('.hero h1'); if (elH1) elH1.innerHTML = t.heroH1;
-    const elH2 = document.querySelector('.hero h2'); if (elH2) elH2.innerHTML = t.heroSub;
-    const elIntro = document.querySelector('.hero .intro'); if (elIntro) elIntro.innerHTML = t.heroDesc;
-    const elBtnStart = document.querySelector('.hero .btn.primary'); if (elBtnStart) elBtnStart.innerHTML = t.btnStart;
-    const elBtnExplore = document.querySelector('.hero .btn:not(.primary)'); if (elBtnExplore) elBtnExplore.innerHTML = t.btnExplore;
-    const btnLang = document.getElementById('lang-btn'); if (btnLang) btnLang.textContent = currentLang === 'hi' ? '🌐 English' : '🌐 हिंदी';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const btnLang = document.getElementById('lang-btn');
-    if (btnLang) btnLang.addEventListener('click', toggleLanguage);
-});
+// Category Filter Engine
+function filterCategory(cat) {
+    const cards = document.querySelectorAll('.panel');
+    const btns = document.querySelectorAll('.cat-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        if (cat === 'all' || cardCat === cat) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW reg error:', err));
+  });
+}
