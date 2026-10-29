@@ -4,14 +4,49 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Social Media | VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="../css/style.css">
+<style>
+.social-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.post-card{border:1px solid #1c4b69;border-radius:15px;padding:18px;background:#010814;text-align:left;margin-top:15px}
+.post-card h3{margin:0 0 5px;color:var(--cyan);font-size:16px}
+.post-card p{font-size:14px;color:#d0e3f2;margin:0 0 10px}
+.post-actions{display:flex;gap:12px}
+.like-btn{border:1px solid #285573;background:#03182b;color:#23e8ff;padding:6px 14px;border-radius:15px;cursor:pointer;font-size:13px}
+.post-input{width:100%;height:80px;padding:10px;border-radius:10px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none;margin-bottom:10px}
+</style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Social Panel</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
-<main class="subpage-container">
-<h2>▶️ Social Media & Community Module</h2>
-<p>यहाँ नेटवर्किंग, सामग्री शेयरिंग और कम्युनिटी हब उपलब्ध होगा।</p>
-<br>
-<a class="btn primary" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Social Hub</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
+<main>
+<div class="social-box">
+<h2>▶️ Social Media & Community Hub</h2>
+<p style="color:var(--muted);font-size:14px">डिजिटल क्रिएटर कम्युनिटी, पोस्ट शेयरिंग एवं सोशल एंगेजमेंट।</p>
+<textarea class="post-input" id="postTxt" placeholder="अपनी नई पोस्ट या विचार साझा करें..."></textarea>
+<button class="btn primary" onclick="addPost()" style="width:100%">🚀 पोस्ट शेयर करें</button>
+<div id="feed">
+<div class="post-card">
+<h3>🇮🇳 VIRAT Community Update</h3>
+<p>विराट डिजिटल इकोसिस्टम में आपका स्वागत है! स्वदेशी तकनीक के साथ जुड़ें।</p>
+<div class="post-actions"><button class="like-btn" onclick="likePost(this)">❤️ <span class="count">12</span> Likes</button></div>
+</div>
+</div>
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
 </main>
 <script src="../js/script.js"></script>
+<script>
+function addPost(){
+let t=document.getElementById('postTxt').value.trim();
+if(!t){alert('कृपया कुछ टेक्स्ट लिखें!');return;}
+let f=document.getElementById('feed');
+let d=document.createElement('div');
+d.className='post-card';
+d.innerHTML=`<h3>👤 User Post</h3><p>${t}</p><div class="post-actions"><button class="like-btn" onclick="likePost(this)">❤️ <span class="count">0</span> Likes</button></div>`;
+f.prepend(d);
+document.getElementById('postTxt').value='';
+}
+function likePost(btn){
+let c=btn.querySelector('.count');
+c.textContent=parseInt(c.textContent)+1;
+}
+</script>
 </body></html>
