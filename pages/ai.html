@@ -5,62 +5,37 @@
 <title>AI Services | VIRAT Digital Ecosystem</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
-.ai-box{max-width:850px;margin:30px auto;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
-.chat-window{height:350px;overflow-y:auto;border:1px solid #1e3d54;border-radius:12px;padding:15px;background:#010710;display:flex;flex-direction:column;gap:12px;margin-bottom:15px}
-.msg{padding:10px 14px;border-radius:12px;max-width:80%;line-height:1.5;font-size:14px}
+.chat-window{height:320px;overflow-y:auto;border:1px solid #1e3d54;border-radius:12px;padding:15px;background:#010710;display:flex;flex-direction:column;gap:12px;margin:15px 0}
+.msg{padding:10px 14px;border-radius:12px;max-width:80%;font-size:14px;line-height:1.4}
 .msg.user{background:#005288;color:#fff;align-self:flex-end}
 .msg.ai{background:#042138;color:#23e8ff;border:1px solid #145980;align-self:flex-start}
 .input-group{display:flex;gap:10px}
 .input-group input{flex:1;padding:12px;border-radius:25px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none}
-.input-group button{padding:12px 24px;border-radius:25px;border:0;background:var(--cyan);color:#020b16;font-weight:700;cursor:pointer}
-.quick-prompts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.prompt-btn{border:1px solid #206280;background:#03182b;color:#a8d5f2;padding:6px 12px;border-radius:15px;font-size:12px;cursor:pointer}
-.prompt-btn:hover{border-color:var(--cyan);color:#fff}
 </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>AI Panel</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>AI Workspace</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="../index.html#panels">Panels</a></nav><button class="menu" id="menu">☰</button></header>
 <main>
-<div class="ai-box">
+<div class="subpage-box">
 <h2>🤖 VIRAT AI Workspace</h2>
-<p style="color:var(--muted);font-size:14px">संवादात्मक एआई, कोड ऑटोमेशन और त्वरित प्रश्नों के उत्तर प्राप्त करें।</p>
-<div class="chat-window" id="chat">
-<div class="msg ai">नमस्ते! मैं VIRAT AI असिस्टेंट हूँ। मैं आपकी क्या मदद कर सकता हूँ?</div>
-</div>
-<div class="input-group">
-<input type="text" id="userInput" placeholder="अपना प्रश्न या कोड प्रॉम्प्ट यहाँ लिखें...">
-<button id="sendBtn">पूछें →</button>
-</div>
-<div class="quick-prompts">
-<button class="prompt-btn" onclick="quickPrompt('HTML5 का बेसिक स्ट्रक्चर बताओ')">💡 HTML5 कोड</button>
-<button class="prompt-btn" onclick="quickPrompt('डिजिटल इंडिया का क्या उद्देश्य है?')">🇮🇳 डिजिटल इंडिया</button>
-<button class="prompt-btn" onclick="quickPrompt('Python में Hello World प्रोग्राम')">🐍 Python कोड</button>
-</div>
-<br>
-<a class="btn primary" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+<p style="color:var(--muted);font-size:14px">संवादात्मक एआई, कोड ऑटोमेशन व स्मार्ट उत्तर प्राप्त करें।</p>
+<div class="chat-window" id="chat"><div class="msg ai">नमस्ते! मैं VIRAT AI असिस्टेंट हूँ। आप मुझसे क्या पूछना चाहते हैं?</div></div>
+<div class="input-group"><input type="text" id="userInput" placeholder="यहाँ अपना सवाल लिखें..."><button class="btn primary" onclick="processAI()">पूछें →</button></div>
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
 </div>
 </main>
 <script src="../js/script.js"></script>
 <script>
-const chat = document.getElementById('chat'), input = document.getElementById('userInput'), btn = document.getElementById('sendBtn');
-function addMsg(text, type) {
-    const div = document.createElement('div');
-    div.className = 'msg ' + type;
-    div.textContent = text;
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
+function processAI(){
+    const input = document.getElementById('userInput'), chat = document.getElementById('chat');
+    const txt = input.value.trim(); if(!txt) return;
+    let uMsg = document.createElement('div'); uMsg.className='msg user'; uMsg.textContent=txt; chat.appendChild(uMsg);
+    input.value='';
+    setTimeout(()=>{
+        let aMsg = document.createElement('div'); aMsg.className='msg ai';
+        aMsg.textContent=`VIRAT AI: "${txt}" पर प्रोसेस किया जा रहा है... (AI Live Connection Active)`;
+        chat.appendChild(aMsg); chat.scrollTop = chat.scrollHeight;
+    }, 600);
 }
-function processAI() {
-    const txt = input.value.trim();
-    if(!txt) return;
-    addMsg(txt, 'user');
-    input.value = '';
-    setTimeout(() => {
-        addMsg('VIRAT AI Response: "' + txt + '" पर कार्य किया जा रहा है। (एआई एपीआई एकीकरण सक्रिय है)', 'ai');
-    }, 800);
-}
-btn.addEventListener('click', processAI);
-input.addEventListener('keypress', (e) => { if(e.key === 'Enter') processAI(); });
-function quickPrompt(p) { input.value = p; processAI(); }
 </script>
 </body></html>

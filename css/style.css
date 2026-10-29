@@ -10,6 +10,8 @@ a{color:inherit;text-decoration:none}
 .brand strong span{color:#ffad31}
 .nav{display:flex;align-items:center;gap:clamp(14px,3vw,36px);font-size:14px}
 .nav a:hover{color:var(--green)}
+.lang-btn{border:1px solid var(--cyan);background:#041a2d;color:var(--text);border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;margin-right:10px}
+.lang-btn:hover{background:var(--cyan);color:#020b16}
 .premium{border:1px solid #ffbd28;border-radius:28px;padding:11px 20px;box-shadow:0 0 15px #ffb51e2b;white-space:nowrap}
 .menu{display:none;background:none;color:white;border:1px solid #31566d;border-radius:10px;padding:8px 11px;font-size:21px}
 .hero{position:relative;min-height:480px;padding:50px clamp(20px,4.5vw,64px) 25px;display:grid;grid-template-columns:1fr 1.08fr;align-items:center;gap:12px;isolation:isolate}
@@ -23,7 +25,7 @@ a{color:inherit;text-decoration:none}
 .benefits{display:flex;flex-wrap:wrap;gap:11px;font-weight:650;font-size:13px;margin:18px 0 23px}
 .benefits span:nth-child(odd){color:#69ffb5}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:30px;padding:13px 22px;font-weight:750;font-size:14px;border:1px solid #27e9ff;background:#041a2d;color:white;box-shadow:0 0 18px #13dfff2b}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:30px;padding:13px 22px;font-weight:750;font-size:14px;border:1px solid #27e9ff;background:#041a2d;color:white;box-shadow:0 0 18px #13dfff2b;cursor:pointer}
 .btn.primary{background:linear-gradient(110deg,#00d879,#00e6ad 45%,#ffae19);border:0;color:#fff;box-shadow:0 0 24px #00ed9850}
 .hero-visual{min-height:310px;display:flex;align-items:center;justify-content:center}
 .orb{width:clamp(220px,30vw,350px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 38% 30%,#0e8cff,#061c63 48%,#02081b 72%);border:2px solid #1aeaff;box-shadow:0 0 26px #0ceaff, inset 0 0 32px #087dff;transform:rotate(-8deg)}
@@ -61,6 +63,6 @@ a{color:inherit;text-decoration:none}
 .footer{border-top:1px solid #ff9b18;padding:24px clamp(20px,4.5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:#020914}
 .footer-links{display:flex;gap:20px;color:#d0e0ef;font-size:13px}
 .footer small{color:#a8bfd2}
-.subpage-container{max-width:800px;margin:50px auto;padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--panel);text-align:center}
+.subpage-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel);text-align:center}
 @media(max-width:760px){.topbar{height:68px}.nav{display:none;position:absolute;top:67px;left:0;right:0;padding:20px;background:#031323;flex-direction:column;align-items:stretch;border-bottom:1px solid #244b62}.nav.open{display:flex}.menu{display:block}.premium{padding:9px 12px;font-size:12px}.hero{grid-template-columns:1fr;padding-top:38px;gap:0}.hero:before{background:linear-gradient(90deg,#020b16d9,#020b1640),url('assets/tricolor-v-orb.jpg') 62% center/auto 100% no-repeat;opacity:.78}.hero-visual{min-height:250px;grid-row:1}.hero-copy{grid-row:2}.orb{width:205px}.orb span{font-size:100px}.stats{grid-template-columns:1fr 1fr;gap:14px;padding:15px 8px}.stat{justify-content:flex-start;border-right:0;padding:5px 8px}.stat-icon{width:39px;height:39px;font-size:18px}.stat strong{font-size:18px}.stat small{font-size:11px}.panels{grid-template-columns:1fr 1fr;gap:12px}.panel{padding:17px;min-height:190px}.panel h3{font-size:17px}.panel p{font-size:13px}.panel .emoji{font-size:29px}.arrow{width:32px;height:32px;right:12px;top:25px;transform:none}.section{padding-top:65px;padding-bottom:65px}.about{grid-template-columns:1fr;gap:24px}.footer{justify-content:center;text-align:center}.footer-links{justify-content:center;flex-wrap:wrap}}
 @media(max-width:420px){.brand small{font-size:9px}.flag{width:36px;height:36px}.premium{display:none}.hero h1{letter-spacing:-1px}.panels{grid-template-columns:1fr}.panel{min-height:150px}.panel p{max-width:90%}.checks{grid-template-columns:1fr}.stats{margin-left:12px;margin-right:12px}}
