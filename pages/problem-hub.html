@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citizen Problem Hub | VIRAT Digital Ecosystem</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.hub-box{max-width:850px;margin:30px auto;padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.form-group{margin-bottom:15px;text-align:left}
+.form-group label{display:block;margin-bottom:5px;font-size:13px;color:var(--muted)}
+.form-group input, .form-group select, .form-group textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #285573;background:#020d1a;color:#fff;outline:none}
+.form-group textarea{height:100px;resize:vertical}
+.complaint-card{border:1px solid #1c4b69;border-radius:15px;padding:18px;background:#010814;text-align:left;margin-top:15px}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="../index.html"><span class="flag">🇮🇳</span><span><strong>VIRAT DIGITAL ECOSYSTEM</strong><small>Problem Hub</small></span></a><nav class="nav" id="nav"><a href="../index.html">Home</a><a href="csc.html">CSC</a></nav><button class="menu" id="menu">☰</button></header>
+<main>
+<div class="hub-box">
+<h2>🏛️ Citizen Problem Hub & Grievance Draft</h2>
+<p style="color:var(--muted);font-size:14px">नागरिक समस्या दर्ज करें और संबंधित विभाग के लिए आधिकारिक शिकायत ड्राफ्ट तैयार करें।</p>
+
+<div class="form-group">
+<label>समस्या की श्रेणी (Category)</label>
+<select id="probCat">
+<option value="सड़क एवं परिवहन (Roads & Transport)">सड़क एवं परिवहन (Roads & Transport)</option>
+<option value="जल एवं स्वच्छता (Water & Sanitation)">जल एवं स्वच्छता (Water & Sanitation)</option>
+<option value="विद्युत आपूर्ति (Electricity)">विद्युत आपूर्ति (Electricity)</option>
+<option value="स्वास्थ्य एवं सफाई (Health)">स्वास्थ्य एवं सफाई (Health)</option>
+<option value="अन्य नागरिक समस्या (Others)">अन्य नागरिक समस्या (Others)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>स्थान / क्षेत्र (Location / Area)</label>
+<input type="text" id="probLoc" placeholder="उदा: वार्ड नंबर, शहर, पिनकोड">
+</div>
+
+<div class="form-group">
+<label>समस्या का विवरण (Description)</label>
+<textarea id="probDesc" placeholder="अपनी समस्या विस्तार से यहाँ लिखें..."></textarea>
+</div>
+
+<button class="btn primary" onclick="generateDraft()" style="width:100%">📝 शिकायत ड्राफ्ट बनाएँ</button>
+
+<div id="draftResult" style="display:none;margin-top:20px;">
+<div class="complaint-card">
+<h3 style="color:var(--cyan);margin-top:0;">📋 तैयार शिकायत ड्राफ्ट</h3>
+<p id="draftText" style="font-size:14px;color:#d0e3f2;white-space:pre-line;"></p>
+<button class="btn" onclick="alert('शिकायत ड्राफ्ट सुरक्षित कर लिया गया है!')" style="margin-top:10px;">💾 ड्राफ्ट सेव करें</button>
+</div>
+</div>
+
+<br><a class="btn" href="../index.html">← मुख्य पृष्ठ पर लौटें</a>
+</div>
+</main>
+<script src="../js/script.js"></script>
+<script>
+function generateDraft(){
+let cat = document.getElementById('probCat').value;
+let loc = document.getElementById('probLoc').value.trim();
+let desc = document.getElementById('probDesc').value.trim();
+
+if(!loc || !desc){ alert('कृपया स्थान और विवरण दोनों दर्ज करें!'); return; }
+
+let draft = `प्रति,\nसंबंधित विभाग अधिकारी,\nविभागीय श्रेणी: ${cat}\nक्षेत्र/स्थान: ${loc}\n\nविषय: नागरिक समस्या निवारण हेतु निवेदन।\n\nविवरण:\n${desc}\n\nदिनांक: ${new Date().toLocaleDateString('hi-IN')}\nस्थिति: ड्राफ्ट तैयार (Draft Mode)`;
+
+document.getElementById('draftText').textContent = draft;
+document.getElementById('draftResult').style.display = 'block';
+}
+</script>
+</body></html>
